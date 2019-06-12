@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NetCoreDemo.Models;
 
 namespace NetCoreDemo
 {
@@ -30,8 +31,10 @@ namespace NetCoreDemo
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.Configure<Content>(Configuration.GetSection("ContentList"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
